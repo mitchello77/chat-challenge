@@ -1,6 +1,8 @@
 import { useAuth } from "hooks/useAuth";
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
+import { useRecoilValue } from "recoil";
+import { messagesState } from "atoms/messages";
 
 import MessageContainer from "components/MessageContainer";
 import MessageForm from "components/MessageForm";
@@ -10,8 +12,8 @@ const Chat = () => {
 	
 	const history = useHistory();
 	const { currentUser } = useAuth();
-	const { messages, fetchMessages, fetching } = useMessages()
-	
+	const { fetchMessages, fetching } = useMessages()
+	const messages = useRecoilValue(messagesState);
 
 
 
@@ -28,7 +30,11 @@ const Chat = () => {
 		};
 	}, []);
 
-	if (fetching) {
+	useEffect(() => {
+		console.log(messages);
+	}, [messages]);
+
+	if (fetching || messages.length === 0) {
 		return (<div>Loading...</div>)
 	}
 

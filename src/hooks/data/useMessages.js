@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import { useApi } from "hooks/useApi";
 import { useAuth } from 'hooks/useAuth';
+import { useRecoilState } from 'recoil';
+import { messagesState } from 'atoms/messages';
 
-const useUsers = () => {
+const useMessages = () => {
 
-	const [ messages, setMessages ] = useState([]);
+	const [ messages, setMessages ] = useRecoilState(messagesState);
 	const [ fetching, setFetching ] = useState(true);
 
 	const { getMessages } = useApi();
@@ -13,9 +15,8 @@ const useUsers = () => {
 
 	const fetchMessages = async () => {
 		setFetching(true);
-		const {data: messages} = await getMessages();
-		console.log(messages);
-		setMessages(messages);
+		const {data: _messages} = await getMessages();
+		setMessages(_messages);
 		setFetching(false);
 	}
 
@@ -42,7 +43,6 @@ const useUsers = () => {
 	return {
 		fetching,
 		fetchMessages,
-		messages,
 		setMessages,
 		create,
 		update,
@@ -50,4 +50,4 @@ const useUsers = () => {
 	};
 };
 
-export default useUsers;
+export default useMessages;

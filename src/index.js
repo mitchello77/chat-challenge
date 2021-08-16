@@ -3,13 +3,16 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { AuthProvider } from 'hooks/useAuth';
+import { RecoilRoot } from 'recoil';
 import './styles.scss';
 
 ReactDOM.render(
   <React.StrictMode>
-    <AuthProvider>
-      <App />
-    </AuthProvider>
+    <RecoilRoot>
+      <AuthProvider>
+        <App />
+      </AuthProvider>
+    </RecoilRoot>
   </React.StrictMode>,
   document.getElementById('root')
 );
