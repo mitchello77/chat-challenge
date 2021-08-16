@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import useMessages from "hooks/data/useMessages"
+import TextareaAutosize from 'react-textarea-autosize'; 
 
 const PaperPlane = () => {
 	return (
@@ -19,12 +20,13 @@ const MessageForm = ({}) => {
 
 	return (
 		<div className="message-form">
-			<textarea
+			<TextareaAutosize
 				value={message}
 				placeholder="Type Message"
 				onChange={(e) => setMessage(e.target.value)}
+				maxRows={4}
 			/>
-			<button title="Send" onClick={onSendClick} disabled={message === ''}><PaperPlane /></button>
+			<button title="Send" onClick={onSendClick} disabled={message.trim() === ''}><PaperPlane /></button>
 		</div>
 	);
 };

@@ -92,8 +92,9 @@ body {
     button {
       @include button-reset;
       position: absolute;
-      right: 9px;
-      top: 9px;
+      right: 11px;
+      top: 50%;
+      transform: translateY(-50%);
       padding: 10px;
       border: none;
       background-color: none;
@@ -127,6 +128,7 @@ body {
       color: #333;
       padding-right: 40px;
       resize: none;
+      scrollbar-width: thin;
 
       &:focus {
         border: 1px solid #555555;
