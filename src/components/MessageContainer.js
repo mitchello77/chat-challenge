@@ -10,9 +10,11 @@ const MessageContainer = ({ messages }) => {
 
 	return (
 		<div className="messages-container">
-			{_messages.sort(order).map( (message) => (
-				<MessageBubble message={message} />
-			))}
+			<div className="messages-wrap">
+				{_messages.sort(order).map( (message) => (
+					<MessageBubble message={message} />
+				))}
+			</div>
 		</div>
 	);
 };

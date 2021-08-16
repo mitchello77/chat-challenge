@@ -11,16 +11,20 @@ const MessageForm = ({}) => {
 	const [message, setMessage] = useState('');
 
 	const onSendClick = () => {
-		create(message);
+		if (message !== '') {
+			create(message);
+			setMessage('');
+		}
 	}
 
 	return (
 		<div className="message-form">
-			<input 
+			<textarea
+				value={message}
 				placeholder="Type Message"
 				onChange={(e) => setMessage(e.target.value)}
 			/>
-			<button title="Send" onClick={onSendClick}><PaperPlane /></button>
+			<button title="Send" onClick={onSendClick} disabled={message === ''}><PaperPlane /></button>
 		</div>
 	);
 };
