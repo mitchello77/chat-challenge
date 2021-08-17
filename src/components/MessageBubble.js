@@ -17,15 +17,6 @@ const MessageBubble = ({ message }) => {
 	}
 
 	useEffect(() => {
-		if (expanded) {
-			bubbleRef.current.scrollIntoView({
-				behavior: 'smooth',
-				block: 'start'
-			});
-		}
-	}, [expanded]);
-
-	useEffect(() => {
 		if (hasReadMore) {
 			setTimeout(() => {
 				bubbleRef.current.scrollIntoView({
