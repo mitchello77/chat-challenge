@@ -26,6 +26,17 @@ const MessageBubble = ({ message }) => {
 	}, [expanded]);
 
 	useEffect(() => {
+		if (hasReadMore) {
+			setTimeout(() => {
+				bubbleRef.current.scrollIntoView({
+					behavior: 'smooth',
+					block: 'start'
+				});
+			}, 0);
+		}
+	}, [hasReadMore]);
+
+	useEffect(() => {
 		if (innerRef.current !== null) {
 			sethasReadMore(isOverflowing(innerRef.current));
 		}
