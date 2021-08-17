@@ -181,12 +181,13 @@ body {
     textarea {
       width: 100%;
       padding: 0.65em;
-      font-size: 16px;
+      font-size: 15px;
       border: 1px solid #E1E1E1;
       color: #333;
       padding-right: 40px;
       resize: none;
       scrollbar-width: thin;
+      font-family: "Open Sans","Helvetica Neue",sans-serif;
 
       &::-webkit-scrollbar {
         width: 6px;
