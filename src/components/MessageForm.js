@@ -14,7 +14,7 @@ const MessageForm = () => {
 	const onSendClick = () => {
 		if (message.trim() !== '') {
 			sendMessage();
-		}
+		} 
 	}
 
 	const onKeyUp = (e) => {
