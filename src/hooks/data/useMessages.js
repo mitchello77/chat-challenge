@@ -21,7 +21,7 @@ const useMessages = () => {
 	}
 
 
-	const create = (messageText) => {
+	const create = async (messageText) => {
 		setMessages([
 			...messages,
 			{

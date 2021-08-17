@@ -1,15 +1,58 @@
 import { useAuth } from "hooks/useAuth";
+import { useEffect, useRef, useState } from "react";
 
 
 const MessageBubble = ({ message }) => {
 	const { currentUser } = useAuth();
+	const innerRef = useRef(null);
+	const bubbleRef = useRef(null);
+	const [hasReadMore, sethasReadMore] = useState(false);
+	const [expanded, setExpanded] = useState(false);
 
-	const direction = (currentUser.id === message.id) ? "mine" : "other";
+	const direction = (currentUser.id == message.userID) ? "mine" : "other";
+
+	const onReadMore = () => {
+		sethasReadMore(false);
+		setExpanded(true);
+	}
+
+	useEffect(() => {
+		if (expanded) {
+			bubbleRef.current.scrollIntoView({
+				behavior: 'smooth',
+				block: 'start'
+			});
+		}
+	}, [expanded]);
+
+	useEffect(() => {
+		if (innerRef.current !== null) {
+			sethasReadMore(isOverflowing(innerRef.current));
+		}
+	}, [innerRef.current]);
 	return (
-		<div className={`message-bubble ${direction}`}>
-			{message.message}
+		<div
+			ref={bubbleRef}
+			className={`message-bubble ${direction} ${expanded && 'expanded'} `}
+		>
+			<div className="inner" ref={innerRef}>
+				{message.message}
+			</div>
+			{hasReadMore && (
+				<div className="read-more" onClick={onReadMore}>
+					Read more
+				</div>
+			)}
+			
 		</div>
 	);
 };
+
+
+function isOverflowing(el)
+{
+   return el.clientWidth < el.scrollWidth || el.clientHeight < el.scrollHeight;
+}
+
 
 export default MessageBubble;

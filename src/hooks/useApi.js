@@ -20,6 +20,6 @@ export function useApi() {
 
 	return {
 		getUsers,
-		getMessages
+		getMessages,
 	}
 }

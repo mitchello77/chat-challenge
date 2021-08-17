@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useApi } from "hooks/useApi";
 import SelectProfile from "components/users/SelectProfile";
+import Loader from "components/Loader";
 
 const Users = ({setUser}) => {
 	const { getUsers } = useApi();
@@ -18,13 +19,13 @@ const Users = ({setUser}) => {
 	}, []);
 
 	if (loading) {
-		return (<div>Loading...</div>)
+		return <Loader />
 	}
 
 	return (
 		<div className="view" id="users">
 			{users.map( (user) => (
-				<SelectProfile user={user} />
+				<SelectProfile user={user} key={user.id} />
 			))}
 		</div>
 	);
