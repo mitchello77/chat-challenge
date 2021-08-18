@@ -3,7 +3,7 @@ import { useApi } from "hooks/useApi";
 import SelectProfile from "components/users/SelectProfile";
 import Loader from "components/Loader";
 
-const Users = ({setUser}) => {
+const Users = () => {
 	const { getUsers } = useApi();
 	const [ loading, setLoading ] = useState(true);
 	const [ users, setUsers ] = useState([]);

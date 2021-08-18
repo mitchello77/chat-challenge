@@ -8,6 +8,21 @@ import MessageContainer from "components/MessageContainer";
 import MessageForm from "components/MessageForm";
 import useMessages from "hooks/data/useMessages"
 
+const BackLink = () => {
+	const { setCurrentUser } = useAuth();
+	const history = useHistory();
+
+	const onClick = () => {
+		history.push('/users');
+		setCurrentUser(null);
+	};
+
+	return (
+		<span className="back-button" onClick={onClick}>Back</span>
+	)
+};
+
+
 const Chat = () => {
 	
 	const history = useHistory();
@@ -39,7 +54,7 @@ const Chat = () => {
 		}
 	}, [messages]);
 
-	if (fetching || messages.length === 0) {
+	if (fetching) {
 		return <Loader />
 	}
 
@@ -47,7 +62,7 @@ const Chat = () => {
 		<div className="view" id="chat">
 			<MessageContainer messages={messages} scrollAnchor={scrollAnchor}/>
 			<MessageForm />
-
+			<BackLink />
 		</div>
 	);
 };

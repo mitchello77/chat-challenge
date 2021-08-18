@@ -1,6 +1,5 @@
 
-import { createContext, useContext, useEffect, useState } from "react"
-import { useHistory } from "react-router-dom";
+import { createContext, useContext, useState } from "react"
 
 /**
  * @typedef {Object} User
@@ -35,11 +34,7 @@ export function AuthProvider({ children }) {
 
 function useProvideAuth() {
 	
-	const history = useHistory();
 	const [currentUser, setCurrentUser] = useState(null);
-
-  
-
 
 	return {
 		currentUser,

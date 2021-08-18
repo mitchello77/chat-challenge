@@ -54,6 +54,17 @@ body {
   align-items: center;
 }
 
+.back-button {
+  position: absolute;
+  left: 0;
+  top: -25px;
+  cursor: pointer;
+
+  &:hover {
+    font-weight: 600;
+  }
+}
+
 #chat {
   .messages-container {
     height: 100%;
@@ -222,6 +233,7 @@ body {
   height: 100%;
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 
