@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+# Run Me
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Have a look at the built app here! [Chat App](https://chat-challenge-topaz.vercel.app/).
 
 ## Available Scripts
 
