@@ -9,7 +9,7 @@ const MessageBubble = ({ message }) => {
 	const [hasReadMore, sethasReadMore] = useState(false);
 	const [expanded, setExpanded] = useState(false);
 
-	const direction = (currentUser.id == message.userID) ? "mine" : "other";
+	const direction = (Number(currentUser.id) === Number(message.userID)) ? "mine" : "other";
 
 	const onReadMore = () => {
 		sethasReadMore(false);
@@ -31,7 +31,7 @@ const MessageBubble = ({ message }) => {
 		if (innerRef.current !== null) {
 			sethasReadMore(isOverflowing(innerRef.current));
 		}
-	}, [innerRef.current]);
+	}, [innerRef]);
 	return (
 		<div
 			ref={bubbleRef}

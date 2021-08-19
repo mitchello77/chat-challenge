@@ -1,5 +1,5 @@
 import { useAuth } from "hooks/useAuth";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { useHistory } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import { messagesState } from "atoms/messages";
