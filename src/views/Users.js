@@ -5,26 +5,21 @@ import Loader from "components/Loader";
 
 const Users = () => {
 	const { getUsers } = useApi();
-	const [ loading, setLoading ] = useState(true);
-	const [ users, setUsers ] = useState([]);
+	const [users, setUsers] = useState([]);
 
 	const fetchUsers = async () => {
-		const {data: users} = await getUsers();
+		const { data: users } = await getUsers();
 		setUsers(users);
-		setLoading(false);
 	}
 
 	useEffect(() => {
 		fetchUsers();
 	}, []);
 
-	if (loading) {
-		return <Loader />
-	}
 
 	return (
 		<div className="view" id="users">
-			{users.map( (user) => (
+			{users.map((user) => (
 				<SelectProfile user={user} key={user.id} />
 			))}
 		</div>

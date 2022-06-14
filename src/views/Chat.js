@@ -24,7 +24,7 @@ const BackLink = () => {
 
 
 const Chat = () => {
-	
+
 	const history = useHistory();
 	const { currentUser } = useAuth();
 	const { fetchMessages, fetching } = useMessages()
@@ -36,7 +36,7 @@ const Chat = () => {
 	useEffect(() => {
 		if (currentUser === null) {
 			history.push('/users');
-		} 
+		}
 	}, [currentUser]);
 
 	useEffect(() => {
@@ -45,22 +45,13 @@ const Chat = () => {
 		};
 	}, []);
 
-	useEffect(() => {
-		if (scrollAnchor.current !== null && messages.length > 0) {
-			scrollAnchor.current.scrollIntoView({
-				behavior: 'smooth',
-				block: 'start'
-			});
-		}
-	}, [messages]);
-
 	if (fetching) {
 		return <Loader />
 	}
 
 	return (
 		<div className="view" id="chat">
-			<MessageContainer messages={messages} scrollAnchor={scrollAnchor}/>
+			<MessageContainer messages={messages} scrollAnchor={null} />
 			<MessageForm />
 			<BackLink />
 		</div>
